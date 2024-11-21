@@ -41,10 +41,12 @@ jobs:
       run: mvn test
 
     - name: Cache build
-  uses: actions/cache@v3
-  with:
-    key: cached-build-${{github.sha}}
-    path: .
+      uses: actions/cache@v3
+      with:
+        key: cached-build-${{github.sha}}
+        path: .
+
+   
 
     # https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload jacoco results as artifact
@@ -67,8 +69,10 @@ jobs:
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v3
 
-      - name: Restore cached build
-        uses: actions/cache@v3
-        with:
-          key: cached-build-${{github.sha}}
-          path: .
+    - name: Restore cached build
+      uses: actions/cache@v3
+      with:
+        key: cached-build-${{github.sha}}
+        path: .
+
+    
